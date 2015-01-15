@@ -319,5 +319,5 @@ Whether to execute only when an event is received, defaults to `false`.
 ## Development
 
 Pull requests are highly encouraged, please read the guidelines in
-[CONTRIBUTING](CONTRIBUTING.md) before submitting. Tests are run by
-[Travis CI](https://travis-ci.org/).
+[CONTRIBUTING](https://github.com/venmo/puppet-sentry/blob/master/CONTRIBUTING.md)
+before submitting. Tests are run by [Travis CI](https://travis-ci.org/).
