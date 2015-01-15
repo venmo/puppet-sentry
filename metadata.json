@@ -1,0 +1,46 @@
+{
+  "name": "venmo-sentry",
+  "version": "0.1.0",
+  "author": "Venmo",
+  "summary": "Puppet module for managing the Sentry realtime event logging and aggregation platform",
+  "license": "Apache-2.0",
+  "source": "https://github.com/venmo/puppet-sentry",
+  "project_page": "https://forge.puppetlabs.com/venmo/sentry",
+  "issues_url": "https://github.com/venmo/puppet-sentry/issues",
+  "dependencies": [
+    {
+      "name": "ajcrowe/supervisord",
+      "version_requirement": ">= 0.5.1 < 1.0.0"
+    },
+    {
+      "name": "puppetlabs/git",
+      "version_requirement": ">= 0.3.0 < 1.0.0"
+    },
+    {
+      "name": "puppetlabs/nodejs",
+      "version_requirement": ">= 0.6.1 < 1.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.4.0 < 5.0.0"
+    },
+    {
+      "name": "stankevich/python",
+      "version_requirement": ">= 1.8.2 < 2.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": ["12.04", "14.04"]
+    }
+  ],
+  "tags": [
+    "sentry",
+    "event",
+    "exception",
+    "alerting",
+    "logging",
+    "monitoring"
+  ]
+}
