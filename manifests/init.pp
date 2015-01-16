@@ -213,11 +213,11 @@ class sentry(
     validate_string($extra_config)
   }
 
-  if $host != $sentry::params::host and
+  if ($proxy_enabled or $host != $sentry::params::host) and
       $password_hash == $sentry::params::password_hash {
     notify { 'Password hash unchanged from default, this is a security risk!': }
   }
-  if $host != $sentry::params::host and
+  if ($proxy_enabled or $host != $sentry::params::host) and
       $secret_key == $sentry::params::secret_key {
     notify { 'Secret key unchanged from default, this is a security risk!': }
   }
