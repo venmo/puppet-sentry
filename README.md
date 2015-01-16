@@ -62,7 +62,8 @@ https://github.com/getsentry/sentry/
 
 ```puppet
 class { 'sentry':
-  git_revision => 'master'
+  source_location => 'git',
+  git_revision    => 'master',
 }
 ```
 
