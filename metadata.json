@@ -4,8 +4,8 @@
   "author": "Venmo",
   "summary": "Puppet module for managing the Sentry realtime event logging and aggregation platform",
   "license": "Apache-2.0",
-  "source": "https://github.com/venmo/puppet-sentry",
-  "project_page": "https://forge.puppetlabs.com/venmo/sentry",
+  "source": "https://github.com/venmo/puppet-sentry.git",
+  "project_page": "https://github.com/venmo/puppet-sentry",
   "issues_url": "https://github.com/venmo/puppet-sentry/issues",
   "dependencies": [
     {
