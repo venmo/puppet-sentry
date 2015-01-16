@@ -4,9 +4,6 @@ describe 'sentry' do
   context 'with default parameters' do
     let(:pp) {"
       class { 'sentry':
-        # We set these next two to avoid warnings about insecure defaults
-        password_hash => 'pbkdf2_sha256$20000$Isa9Kri0hOob$oqPbWfPjb8N8CEBX63UVINAhT5rmtCryOz3F3SE53mA=',
-        secret_key    => 'k0gAJI2BDyUq/24iEdUmVkyTvHz8h5mbdC1Sj7IIR103Gcg1AaHbhw==',
         extra_config  => [
           # The default dummy tsdb returns bogus errors during testing
           'SENTRY_TSDB = \\'sentry.tsdb.inmemory.InMemoryTSDB\\'',
@@ -50,7 +47,7 @@ describe 'sentry' do
 
     describe command("#{SENTRY_COMMAND} dumpdata sentry.user") do
       its(:stdout) { is_expected.to match(/"pk": 1/) }
-      its(:stdout) { is_expected.to match(/"password": "pbkdf2_sha256\$20000\$Isa9Kri0hOob\$oqPbWfPjb8N8CEBX63UVINAhT5rmtCryOz3F3SE53mA="/) }
+      its(:stdout) { is_expected.to match(/"password": "pbkdf2_sha256\$20000\$9tjS6wreTjar\$oAdyvcOd8HCMuBpxdyvv2Cg7xz6Ee1IVz30zYUA46Wg="/) }
       its(:stdout) { is_expected.to match(/"email": "root@localhost"/) }
       its(:stdout) { is_expected.to match(/"username": "admin"/) }
       its(:stderr) { is_expected.to be_empty }
