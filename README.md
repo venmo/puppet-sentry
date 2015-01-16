@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/venmo/puppet-sentry.svg?branch=master)](https://travis-ci.org/venmo/puppet-sentry)
+
 #### Table of Contents
 
 1. [Overview](#overview)
