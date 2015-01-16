@@ -20,6 +20,7 @@ The sentry module installs, configures, and manages the
 aggregation platform. It supports Sentry version 7.x.x on the following
 platforms:
 
+* Debian 7 (Wheezy)
 * Ubuntu 12.04 (Precise)
 * Ubuntu 14.04 (Trusty)
 
@@ -311,7 +312,7 @@ Whether to execute only when an event is received, defaults to `false`.
 
 ## Limitations
 
-* Only Ubuntu 12.04 and 14.04 are currently supported.
+* Only Debian 7 and Ubuntu 12.04/14.04 are currently supported.
 * Only Sentry version 7.x.x is supported, although version 6.4.x has been
   tested and works for the time being.
 * Database migrations are not done automatically on upgrade, but must be
