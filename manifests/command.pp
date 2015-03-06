@@ -8,10 +8,10 @@
 #   The command to execute including any arguments.
 #
 # [*refreshonly*]
-#   Whether to execute only only when an event is received, defaults to `false`.
+#   Whether to execute only when an event is received, defaults to `false`.
 #
 define sentry::command(
-  $command,
+  $command     = $title,
   $refreshonly = false,
 ) {
   include sentry
