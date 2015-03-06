@@ -9,6 +9,9 @@ class sentry::params
   case $::osfamily {
     'Debian': {
       $packages = [
+        # Next two needed by requests (w/ security) python library
+        'libffi-dev',
+        'libssl-dev',
         # Next three needed by lxml python library
         'libxml2-dev',
         'libxslt1-dev',
