@@ -4,7 +4,10 @@ include RspecPuppetFacts
 
 SENTRY_PATH    = '/srv/sentry'
 SENTRY_USER    = 'sentry'
-SENTRY_COMMAND = "#{SENTRY_PATH}/virtualenv/bin/sentry --config=#{SENTRY_PATH}/sentry.conf.py"
+
+SENTRY_VENV_PATH   = "#{SENTRY_PATH}/virtualenv"
+SENTRY_COMMAND     = "#{SENTRY_VENV_PATH}/bin/sentry --config=#{SENTRY_PATH}/sentry.conf.py"
+SENTRY_PIP_COMMAND = "#{SENTRY_VENV_PATH}/bin/pip"
 
 RSpec.configure do |c|
   c.before do

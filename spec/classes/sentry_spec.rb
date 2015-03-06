@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-VIRTUALENV_PATH = "#{SENTRY_PATH}/virtualenv"
-PIP_COMMAND     = "#{VIRTUALENV_PATH}/bin/pip"
-
 describe 'sentry' do
   on_supported_os.each do |os, facts|
     describe "on #{os}" do
@@ -42,17 +39,17 @@ describe 'sentry' do
                .that_comes_before('Exec[install_sentry]') }
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{PIP_COMMAND} install -U sentry",
-            :unless  => "#{PIP_COMMAND} freeze | /bin/grep 'sentry'",
+            :command => "#{SENTRY_PIP_COMMAND} install -U sentry",
+            :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry'",
             :user    => SENTRY_USER,
             :cwd     => SENTRY_PATH,
-          ).that_comes_before("File[#{VIRTUALENV_PATH}/requirements.txt]") }
+          ).that_comes_before("File[#{SENTRY_VENV_PATH}/requirements.txt]") }
 
-          it { is_expected.to contain_file("#{VIRTUALENV_PATH}/requirements.txt")
+          it { is_expected.to contain_file("#{SENTRY_VENV_PATH}/requirements.txt")
                .that_notifies('Exec[install_requirements]') }
 
           it { is_expected.to contain_exec('install_requirements').with(
-            :command => "#{PIP_COMMAND} install -r #{VIRTUALENV_PATH}/requirements.txt",
+            :command => "#{SENTRY_PIP_COMMAND} install -r #{SENTRY_VENV_PATH}/requirements.txt",
             :user    => SENTRY_USER,
             :cwd     => SENTRY_PATH,
           ) }
@@ -62,8 +59,8 @@ describe 'sentry' do
           let(:params) {{ :version => '4.2.0' }}
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{PIP_COMMAND} install -U sentry==4.2.0",
-            :unless  => "#{PIP_COMMAND} freeze | /bin/grep 'sentry==4.2.0'",
+            :command => "#{SENTRY_PIP_COMMAND} install -U sentry==4.2.0",
+            :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry==4.2.0'",
           ) }
         end
 
@@ -71,8 +68,8 @@ describe 'sentry' do
           let(:params) {{ :database => 'postgres' }}
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{PIP_COMMAND} install -U sentry[postgres]",
-            :unless  => "#{PIP_COMMAND} freeze | /bin/grep 'sentry'",
+            :command => "#{SENTRY_PIP_COMMAND} install -U sentry[postgres]",
+            :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry'",
           ) }
         end
 
@@ -83,8 +80,8 @@ describe 'sentry' do
           it { is_expected.to contain_class('nodejs') }
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{PIP_COMMAND} install -e git+https://github.com/getsentry/sentry.git@master#egg=sentry",
-            :unless  => "#{PIP_COMMAND} freeze | /bin/grep 'sentry'",
+            :command => "#{SENTRY_PIP_COMMAND} install -e git+https://github.com/getsentry/sentry.git@master#egg=sentry",
+            :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry'",
           ) }
         end
 
@@ -113,7 +110,7 @@ describe 'sentry' do
           }}
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{PIP_COMMAND} install -e git+https://github.com/getsentry/sentry.git@master#egg=sentry[postgres]",
+            :command => "#{SENTRY_PIP_COMMAND} install -e git+https://github.com/getsentry/sentry.git@master#egg=sentry[postgres]",
           ) }
         end
 
@@ -125,7 +122,7 @@ describe 'sentry' do
             ],
           }}
 
-          it { is_expected.to contain_file("#{VIRTUALENV_PATH}/requirements.txt")
+          it { is_expected.to contain_file("#{SENTRY_VENV_PATH}/requirements.txt")
                .with_content("foo==4.2.0\nbar==2.4.2\n") }
         end
       end
@@ -143,7 +140,7 @@ describe 'sentry' do
         context 'with default parameters' do
           it { is_expected.to contain_class('python') }
 
-          it { is_expected.to contain_python__virtualenv(VIRTUALENV_PATH).with(
+          it { is_expected.to contain_python__virtualenv(SENTRY_VENV_PATH).with(
             :owner => SENTRY_USER,
             :group => SENTRY_USER,
           ) }
@@ -154,11 +151,11 @@ describe 'sentry' do
 
           it { is_expected.not_to contain_class('python') }
 
-          it { is_expected.not_to contain_python__virtualenv(VIRTUALENV_PATH) }
+          it { is_expected.not_to contain_python__virtualenv(SENTRY_VENV_PATH) }
 
           it { is_expected.to contain_exec('create_virtualenv').with(
-            :command => "virtualenv #{VIRTUALENV_PATH}",
-            :creates => "#{VIRTUALENV_PATH}/bin/activate",
+            :command => "virtualenv #{SENTRY_VENV_PATH}",
+            :creates => "#{SENTRY_VENV_PATH}/bin/activate",
             :user    => SENTRY_USER,
             :cwd     => SENTRY_PATH,
           ) }
