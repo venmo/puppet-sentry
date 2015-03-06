@@ -15,19 +15,19 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.6)
+    addressable (2.3.7)
     archive-tar-minitar (0.5.2)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    aws-sdk (1.60.2)
-      aws-sdk-v1 (= 1.60.2)
-    aws-sdk-v1 (1.60.2)
+    aws-sdk (1.63.0)
+      aws-sdk-v1 (= 1.63.0)
+    aws-sdk-v1 (1.63.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     backports (3.6.4)
-    beaker (2.2.0)
+    beaker (2.5.0)
       aws-sdk (~> 1.57)
       docker-api
       fission (~> 0.4)
@@ -51,13 +51,13 @@ GEM
       timers (~> 4.0.0)
     coderay (1.1.0)
     diff-lcs (1.2.5)
-    docker-api (1.17.0)
+    docker-api (1.19.0)
       archive-tar-minitar
       excon (>= 0.38.0)
       json
-    ethon (0.7.2)
+    ethon (0.7.3)
       ffi (>= 1.3.0)
-    excon (0.43.0)
+    excon (0.44.3)
     extlib (0.9.16)
     facter (1.7.6)
     faraday (0.9.1)
@@ -67,7 +67,7 @@ GEM
     ffi (1.9.6)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.27.0)
+    fog (1.28.0)
       fog-atmos
       fog-aws (~> 0.0)
       fog-brightbox (~> 0.4)
@@ -76,6 +76,7 @@ GEM
       fog-json
       fog-profitbricks
       fog-radosgw (>= 0.0.2)
+      fog-riakcs
       fog-sakuracloud (>= 0.0.4)
       fog-serverlove
       fog-softlayer
@@ -89,7 +90,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.0.6)
+    fog-aws (0.1.1)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -98,7 +99,7 @@ GEM
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.27.3)
+    fog-core (1.29.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -118,19 +119,23 @@ GEM
       fog-core (>= 1.21.0)
       fog-json
       fog-xml (>= 0.0.1)
-    fog-sakuracloud (0.1.1)
+    fog-riakcs (0.1.0)
+      fog-core
+      fog-json
+      fog-xml
+    fog-sakuracloud (1.0.0)
       fog-core
       fog-json
     fog-serverlove (0.1.1)
       fog-core
       fog-json
-    fog-softlayer (0.3.28)
-      fog-core (>= 1.27.3)
+    fog-softlayer (0.4.1)
+      fog-core
       fog-json
     fog-storm_on_demand (0.1.0)
       fog-core
       fog-json
-    fog-terremark (0.0.3)
+    fog-terremark (0.0.4)
       fog-core
       fog-xml
     fog-vmfusion (0.0.1)
@@ -143,7 +148,7 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
-    gh (0.13.2)
+    gh (0.14.0)
       addressable
       backports
       faraday (~> 0.8)
@@ -160,7 +165,7 @@ GEM
       multi_json (~> 1.10)
       retriable (~> 1.4)
       signet (~> 0.6)
-    guard (2.11.1)
+    guard (2.12.4)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -174,16 +179,16 @@ GEM
       rake
     hiera (1.3.4)
       json_pure
-    highline (1.6.21)
+    highline (1.7.1)
     hitimes (1.2.2)
-    hocon (0.0.6)
+    hocon (0.0.7)
     i18n (0.7.0)
     inflecto (0.0.2)
     inifile (2.0.2)
     ipaddress (0.8.0)
     json (1.8.2)
     json_pure (1.8.2)
-    jwt (1.2.0)
+    jwt (1.3.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (2.8.5)
@@ -192,7 +197,7 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.9)
     metaclass (0.0.4)
-    metadata-json-lint (0.0.4)
+    metadata-json-lint (0.0.6)
       json
       spdx-licenses (~> 1.0)
     method_source (0.8.2)
@@ -203,23 +208,23 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
-    nenv (0.1.1)
+    nenv (0.2.0)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    netrc (0.10.2)
-    nokogiri (1.6.5)
+    netrc (0.10.3)
+    nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    notiffany (0.0.3)
+    notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puppet (3.7.3)
+    puppet (3.7.4)
       facter (> 1.6, < 3)
       hiera (~> 1.0)
       json_pure
@@ -229,12 +234,11 @@ GEM
     puppet-lint (1.1.0)
     puppet-syntax (1.4.1)
       rake
-    puppetlabs_spec_helper (0.8.2)
+    puppetlabs_spec_helper (0.9.1)
       mocha
       puppet-lint
       puppet-syntax
       rake
-      rspec
       rspec-puppet
     pusher-client (0.6.0)
       json
@@ -247,7 +251,7 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
-    rest-client (1.7.2)
+    rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     retriable (1.4.1)
@@ -262,9 +266,9 @@ GEM
       rspec-core (>= 2.99.0.beta1)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-mocks (2.99.3)
-    rspec-puppet-facts (0.3.3)
+    rspec-puppet-facts (0.4.1)
       facter
-      json (~> 1.8)
+      json
     serverspec (1.16.0)
       highline
       net-ssh
@@ -286,7 +290,7 @@ GEM
     thread_safe (0.3.4)
     timers (4.0.1)
       hitimes
-    travis (1.7.4)
+    travis (1.7.5)
       addressable (~> 2.3)
       backports
       faraday (~> 0.9)
@@ -300,7 +304,7 @@ GEM
     travis-lint (2.0.0)
       json
     trollop (2.1.1)
-    typhoeus (0.7.0)
+    typhoeus (0.7.1)
       ethon (>= 0.7.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
