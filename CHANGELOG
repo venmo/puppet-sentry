@@ -1,3 +1,7 @@
+2015-03-05 Release 0.3.0
+- Support for Sentry 7.3.0+
+- Support for Sentry plugins
+
 2015-01-16 Release 0.2.0
 - Support for Debian 7
 - Documentation fixes
