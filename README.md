@@ -1,3 +1,4 @@
+[![Puppet Forge](https://img.shields.io/puppetforge/v/venmo/sentry.svg)](https://forge.puppetlabs.com/venmo/sentry)
 [![Build Status](https://travis-ci.org/venmo/puppet-sentry.svg?branch=master)](https://travis-ci.org/venmo/puppet-sentry)
 
 #### Table of Contents
