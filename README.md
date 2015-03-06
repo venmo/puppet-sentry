@@ -274,8 +274,8 @@ Can include:
 
 * `host`      SMTP host (defaults to `localhost`)
 * `port`      SMTP port (defaults to `25`)
-* `user`      SMTP user
-* `password`  SMTP password
+* `user`      SMTP user (defaults to none)
+* `password`  SMTP password (defaults to none)
 * `use_tls`   Whether to enable SMTP TLS (defaults to `false`)
 * `from_addr` The from address (defaults to admin email)
 
