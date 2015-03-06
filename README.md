@@ -310,6 +310,19 @@ The command to execute including any arguments.
 
 Whether to execute only when an event is received, defaults to `false`.
 
+#### Define: `sentry::plugin`
+
+Installs a sentry plugin as documented at
+[Plugins](http://sentry.readthedocs.org/en/latest/plugins/).
+
+##### `plugin`
+
+The plugin to install, typically begins with `sentry-`.
+
+##### `version`
+
+The plugin version to install, defaults to latest.
+
 ## Limitations
 
 * Only Debian 7 and Ubuntu 12.04/14.04 are currently supported.
