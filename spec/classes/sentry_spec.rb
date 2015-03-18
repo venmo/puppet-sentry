@@ -175,6 +175,7 @@ describe 'sentry' do
           .with_content(/SECRET_KEY = 'bxXkluWCyi7vNDDALvCKOGCI2WEbohkpF9nVPnV6jWGB1grz5csT3g=='/)
           .with_content(/SENTRY_ADMIN_EMAIL = 'root@localhost'/)
           .with_content(/SENTRY_BEACON = True/)
+          .with_content(/SENTRY_CACHE = 'sentry.cache.django.DjangoCache'/)
           .with_content(/'workers': 3/)
           .that_comes_before("File[#{SENTRY_PATH}/initial_data.json]") }
 

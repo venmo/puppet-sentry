@@ -156,6 +156,8 @@ SENTRY_TSDB_OPTIONS = {
       }
     }
 }
+<% else -%>
+SENTRY_CACHE = 'sentry.cache.django.DjangoCache'
 <% end -%>
 
 <% if @email_enabled -%>
