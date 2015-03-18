@@ -1,3 +1,7 @@
+2015-03-17 Release 0.4.0
+- Support for Sentry 7.4.0+
+- Support for beacon added in 7.3.0
+
 2015-03-05 Release 0.3.0
 - Support for Sentry 7.3.0+
 - Support for Sentry plugins
