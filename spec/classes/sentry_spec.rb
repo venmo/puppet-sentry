@@ -173,6 +173,8 @@ describe 'sentry' do
           .with_content(/SENTRY_WEB_HOST = 'localhost'/)
           .with_content(/SENTRY_WEB_PORT = 9000/)
           .with_content(/SECRET_KEY = 'bxXkluWCyi7vNDDALvCKOGCI2WEbohkpF9nVPnV6jWGB1grz5csT3g=='/)
+          .with_content(/SENTRY_ADMIN_EMAIL = 'root@localhost'/)
+          .with_content(/SENTRY_BEACON = True/)
           .with_content(/'workers': 3/)
           .that_comes_before("File[#{SENTRY_PATH}/initial_data.json]") }
 
@@ -200,6 +202,13 @@ describe 'sentry' do
 
           it { is_expected.to contain_file("#{SENTRY_PATH}/sentry.conf.py")
                .with_content(/'ENGINE': 'django.db.backends.postgresql_psycopg2'/) }
+        end
+
+        context 'with beacon_enabled => false' do
+          let(:params) {{ :beacon_enabled => false }}
+
+          it { is_expected.to contain_file("#{SENTRY_PATH}/sentry.conf.py")
+               .with_content(/SENTRY_BEACON = False/) }
         end
 
         context 'with email_enabled => true' do

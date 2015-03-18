@@ -36,6 +36,17 @@ DATABASES = {
     }
 }
 
+#############
+## General ##
+#############
+
+# The administrative email for this installation.
+# Note: This will be reported back to getsentry.com as the point of contact. See
+# the beacon documentation for more information.
+
+SENTRY_ADMIN_EMAIL = '<%= @email %>'
+SENTRY_BEACON = <%= @beacon_enabled.to_s.capitalize! %>
+
 <% if @redis_enabled -%>
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the CACHES and Redis settings

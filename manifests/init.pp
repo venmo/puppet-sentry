@@ -90,6 +90,10 @@
 #   [mysql]     MySQL DB
 #   [postgres]  Postgres DB
 #
+# [*beacon_enabled*]
+#   Whether to enable support for sending beacons to the Sentry team, defaults
+#   to `true`.
+#
 # [*email_enabled*]
 #   Whether to enable support for sending email notifications, defaults
 #   to `false`.
@@ -160,6 +164,7 @@ class sentry(
   $port            = $sentry::params::port,
   $workers         = $sentry::params::workers,
   $database        = $sentry::params::database,
+  $beacon_enabled  = true,
   $email_enabled   = false,
   $proxy_enabled   = false,
   $redis_enabled   = false,
@@ -191,6 +196,7 @@ class sentry(
     $manage_git,
     $manage_nodejs,
     $manage_python,
+    $beacon_enabled,
     $email_enabled,
     $proxy_enabled,
     $redis_enabled,
