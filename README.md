@@ -30,9 +30,10 @@ platforms:
 Installation is via PyPI or Git, with support for arbitrary PyPI versions
 or Git revisions. Configuration supports optional database integration
 with MySQL/Postgres, caching/queueing with Redis, and a reverse SSL proxy,
-though these must be deployed separately (for which a
-[profile](http://www.craigdunn.org/2012/05/239/) is recommended).
-Service management is done with [Supervisor](http://supervisord.org/).
+though these must be deployed separately (for which an
+[example profile](https://github.com/venmo/puppet-sentry/blob/master/examples/profile.pp)
+is provided). Service management is done with
+[Supervisor](http://supervisord.org/).
 
 ## Setup
 
