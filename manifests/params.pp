@@ -36,7 +36,7 @@ class sentry::params
   $owner           = 'sentry'
   $group           = 'sentry'
   $source_location = 'pypi'
-  $version         = undef  # indicates latest pypi version
+  $version         = '7.7.0'
   $git_revision    = 'master'
   $git_url         = 'git+https://github.com/getsentry/sentry.git'
   $timeout         = 1800

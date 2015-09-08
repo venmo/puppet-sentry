@@ -18,8 +18,8 @@
 
 The sentry module installs, configures, and manages the
 [Sentry](http://sentry.readthedocs.org/) realtime event logging and
-aggregation platform. It supports Sentry version 7.x.x on the following
-platforms:
+aggregation platform. It supports Sentry version >= 7.7.0, < 8.0.0 on
+the following platforms:
 
 * Debian 7 (Wheezy)
 * Ubuntu 12.04 (Precise)
@@ -46,8 +46,7 @@ is provided). Service management is done with
 
 ### Beginning with sentry
 
-A basic deploy with the latest version listening on
-`http://localhost:9000` can be done with
+A basic deploy listening on `http://localhost:9000` can be done with
 
     include sentry
 
@@ -160,7 +159,7 @@ Choose from:
 
 ##### `version`
 
-The Sentry version to install if using PyPI, defaults to `latest`.
+The Sentry version to install if using PyPI, defaults to `7.7.0`.
 
 ##### `git_revision`
 

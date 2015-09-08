@@ -39,7 +39,7 @@ describe 'sentry' do
                .that_comes_before('Exec[install_sentry]') }
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{SENTRY_PIP_COMMAND} install -U sentry",
+            :command => "#{SENTRY_PIP_COMMAND} install sentry==#{SENTRY_VERSION}",
             :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry'",
             :user    => SENTRY_USER,
             :cwd     => SENTRY_PATH,
@@ -55,20 +55,11 @@ describe 'sentry' do
           ) }
         end
 
-        context 'with version' do
-          let(:params) {{ :version => '4.2.0' }}
-
-          it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{SENTRY_PIP_COMMAND} install -U sentry==4.2.0",
-            :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry==4.2.0'",
-          ) }
-        end
-
         context 'with database => postgres' do
           let(:params) {{ :database => 'postgres' }}
 
           it { is_expected.to contain_exec('install_sentry').with(
-            :command => "#{SENTRY_PIP_COMMAND} install -U sentry[postgres]",
+            :command => "#{SENTRY_PIP_COMMAND} install sentry[postgres]==#{SENTRY_VERSION}",
             :unless  => "#{SENTRY_PIP_COMMAND} freeze | /bin/grep 'sentry'",
           ) }
         end

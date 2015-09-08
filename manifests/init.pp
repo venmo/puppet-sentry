@@ -23,7 +23,7 @@
 #   [git]  Git
 #
 # [*version*]
-#   The Sentry version to install if using PyPI, defaults to `latest`.
+#   The Sentry version to install if using PyPI, defaults to `7.7.0`.
 #
 # [*git_revision*]
 #   The Sentry revision to install if using Git, defaults to `master`.
@@ -228,9 +228,9 @@ class sentry(
     notify { 'Secret key unchanged from default, this is a security risk!': }
   }
   if $version and (
-      versioncmp($version, '7.0.0') < 0 or versioncmp($version, '8.0.0') >= 0
+      versioncmp($version, $sentry::params::version) < 0 or versioncmp($version, '8.0.0') >= 0
   ) {
-    notify { 'Only Sentry 7.x.x is supported, use at own risk!': }
+    notify { "Only Sentry >= ${sentry::params::version}, < 8.0.0 is supported, use at own risk!": }
   }
 
   anchor { 'sentry::begin': } ->

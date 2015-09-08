@@ -4,6 +4,7 @@ include RspecPuppetFacts
 
 SENTRY_PATH    = '/srv/sentry'
 SENTRY_USER    = 'sentry'
+SENTRY_VERSION = '7.7.0'
 
 SENTRY_VENV_PATH   = "#{SENTRY_PATH}/virtualenv"
 SENTRY_COMMAND     = "#{SENTRY_VENV_PATH}/bin/sentry --config=#{SENTRY_PATH}/sentry.conf.py"
