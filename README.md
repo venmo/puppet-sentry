@@ -329,13 +329,9 @@ The plugin version to install, defaults to latest.
 
 ## Limitations
 
-* Only Debian 7 and Ubuntu 12.04/14.04 are currently supported.
-* Only Sentry version 7.x.x is supported, although version 6.4.x has been
-  tested and works for the time being.
-* Database migrations are not done automatically on upgrade, but must be
-  done by the `upgrade` command as documented at
-  [Running Migrations](http://sentry.readthedocs.org/en/latest/quickstart/index.html#running-migrations).
-* Upgrades are not done at all for Git installs.
+* Upgrades are not handled automatically, but must be
+  done as documented at
+  [Upgrading](https://sentry.readthedocs.org/en/7.0.0/upgrading/index.html).
 * Multiple Redis servers are not currently supported.
 
 ## Development
