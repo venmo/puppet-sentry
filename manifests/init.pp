@@ -54,19 +54,15 @@
 #   Extra Python requirements to install, in addition to and/or instead of
 #   what's specified in setup.py.
 #
-# [*password_hash*]
-#   The password hash for Sentry's admin user, defaults to password hash for
-#   `password`. Should be a PBKDF2-HMAC-SHA256 hash generated as shown at
-#   https://pythonhosted.org/passlib/lib/passlib.hash.django_std.html#django-1-4-hashes.
+# [*password*]
+#   The password for Sentry's admin user, defaults to `password`.
+#   Should be at least 8 characters long.
 #
 # [*secret_key*]
 #   The secret key to use, should be a randomly generated 40-160 byte string.
 #
-# [*user*]
-#   The username for the Sentry admin user, defaults to `admin`.
-#
 # [*email*]
-#   The email address for the Sentry admin user, defaults to `root@localhost`.
+#   The email address for the Sentry admin user, defaults to `admin@localhost`.
 #
 # [*url*]
 #   The absolute URL to access Sentry, defaults to `http://localhost:9000`.
@@ -155,9 +151,8 @@ class sentry(
   $manage_python     = true,
   $extra_python_reqs = [],
   # Config params
-  $password_hash   = $sentry::params::password_hash,
+  $password        = $sentry::params::password,
   $secret_key      = $sentry::params::secret_key,
-  $user            = $sentry::params::user,
   $email           = $sentry::params::email,
   $url             = $sentry::params::url,
   $host            = $sentry::params::host,
@@ -182,14 +177,13 @@ class sentry(
     $version,
     $git_revision,
     $git_url,
-    $password_hash,
     $email,
     $url,
-    $user,
     $owner,
     $group,
     $host,
   )
+  validate_slength($password, 160, 8)  # the maximum size of 160 is arbitrary
   validate_slength($secret_key, 160, 40)  # the maximum size of 160 is arbitrary
   validate_absolute_path($path)
   validate_bool(
@@ -220,8 +214,8 @@ class sentry(
   }
 
   if ($proxy_enabled or $host != $sentry::params::host) and
-      $password_hash == $sentry::params::password_hash {
-    notify { 'Password hash unchanged from default, this is a security risk!': }
+      $password == $sentry::params::password {
+    notify { 'Password unchanged from default, this is a security risk!': }
   }
   if ($proxy_enabled or $host != $sentry::params::host) and
       $secret_key == $sentry::params::secret_key {

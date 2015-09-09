@@ -46,10 +46,10 @@ describe 'sentry' do
     end
 
     describe command("#{SENTRY_COMMAND} dumpdata sentry.user") do
-      its(:stdout) { is_expected.to match(/"pk": 1/) }
-      its(:stdout) { is_expected.to match(/"password": "pbkdf2_sha256\$20000\$9tjS6wreTjar\$oAdyvcOd8HCMuBpxdyvv2Cg7xz6Ee1IVz30zYUA46Wg="/) }
-      its(:stdout) { is_expected.to match(/"email": "root@localhost"/) }
-      its(:stdout) { is_expected.to match(/"username": "admin"/) }
+      its(:stdout) { is_expected.to match(/"pk": 2/) }
+      its(:stdout) { is_expected.to match(/"password": "pbkdf2_sha256\$[[:digit:]]{5,}\$[[:ascii:]]{12,}\$[[:ascii:]]{43}="/) }
+      its(:stdout) { is_expected.to match(/"email": "admin@localhost"/) }
+      its(:stdout) { is_expected.to match(/"username": "admin@localhost"/) }
       its(:stderr) { is_expected.to be_empty }
       its(:exit_status) { is_expected.to eq 0 }
     end

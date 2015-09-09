@@ -164,22 +164,24 @@ describe 'sentry' do
           .with_content(/SENTRY_WEB_HOST = 'localhost'/)
           .with_content(/SENTRY_WEB_PORT = 9000/)
           .with_content(/SECRET_KEY = 'bxXkluWCyi7vNDDALvCKOGCI2WEbohkpF9nVPnV6jWGB1grz5csT3g=='/)
-          .with_content(/SENTRY_ADMIN_EMAIL = 'root@localhost'/)
+          .with_content(/SENTRY_ADMIN_EMAIL = 'admin@localhost'/)
           .with_content(/SENTRY_BEACON = True/)
           .with_content(/SENTRY_CACHE = 'sentry.cache.django.DjangoCache'/)
           .with_content(/'workers': 3/)
-          .that_comes_before("File[#{SENTRY_PATH}/initial_data.json]") }
+          .that_comes_before("File[#{SENTRY_PATH}/.initialized]") }
 
-          it { is_expected.to contain_file("#{SENTRY_PATH}/initial_data.json").with(
+          it { is_expected.to contain_file("#{SENTRY_PATH}/.initialized").with(
             :owner => SENTRY_USER,
             :group => SENTRY_USER,
           )
-          .with_content(/"password": "pbkdf2_sha256\$20000\$9tjS6wreTjar\$oAdyvcOd8HCMuBpxdyvv2Cg7xz6Ee1IVz30zYUA46Wg="/)
-          .with_content(/"email": "root@localhost"/)
-          .with_content(/"username": "admin"/)
           .that_notifies('Sentry::Command[postconfig_upgrade]') }
 
-          it { is_expected.to contain_sentry__command('postconfig_upgrade') }
+          it { is_expected.to contain_sentry__command('postconfig_upgrade')
+          .that_notifies('Sentry::Command[create_superuser]') }
+
+          it { is_expected.to contain_sentry__command('create_superuser').with(
+            :command => "createuser --email='admin@localhost' --superuser --password='password' --no-input"
+          ) }
         end
 
         context 'with database => mysql' do
