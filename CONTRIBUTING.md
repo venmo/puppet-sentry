@@ -76,9 +76,9 @@ Beaker tests with:
 This will use the host described in `spec/acceptance/nodeset/default.yml`
 by default. To run against another host, set the `BEAKER_set` environment
 variable to the name of a host described by a `.yml` file in the
-`nodeset` directory. For example, to run against Ubuntu 14.04:
+`nodeset` directory. For example, to run against Debian 7:
 
-    BEAKER_set=ubuntu-server-1404-x64 bundle exec rake acceptance
+    BEAKER_set=debian-76-x64 bundle exec rake acceptance
 
 If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_destroy=no` and `BEAKER_provision=no`. On the first run you will

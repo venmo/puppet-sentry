@@ -22,7 +22,6 @@ aggregation platform. It supports Sentry version >= 7.7.0, < 8.0.0 on
 the following platforms:
 
 * Debian 7 (Wheezy)
-* Ubuntu 12.04 (Precise)
 * Ubuntu 14.04 (Trusty)
 
 ## Module Description
