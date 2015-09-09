@@ -13,10 +13,9 @@ else
 end
 
 group :unit_tests do
-  gem "rspec-puppet", :git => "https://github.com/rodjek/rspec-puppet.git", :require => false
-
   gem "metadata-json-lint",     :require => false
   gem "puppetlabs_spec_helper", :require => false
+  gem "rspec-puppet",           :require => false
   gem "rspec-puppet-facts",     :require => false
 end
 
