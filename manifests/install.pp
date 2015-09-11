@@ -18,13 +18,8 @@ class sentry::install
 
   case $sentry::source_location {
     'pypi': {
-      if $sentry::version {
-        $pip_install_args = "-U ${pip_install_spec}==${sentry::version}"
-        $pip_freeze_spec = "sentry==${sentry::version}"
-      } else {
-        $pip_install_args = "-U ${pip_install_spec}"
-        $pip_freeze_spec = 'sentry'
-      }
+      $pip_install_args = "${pip_install_spec}==${sentry::version}"
+      $pip_freeze_spec = 'sentry'
     }
     'git': {
       $pip_install_args = join([

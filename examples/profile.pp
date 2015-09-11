@@ -22,8 +22,8 @@
 # === Example Usage
 #
 #    class { 'sentry_profile':
-#      version           => '7.4.3',
-#      password_hash     => 'pbkdf2_sha256$20000$9tjS6wreTjar$oAdyvcOd8HCMuBpxdyvv2Cg7xz6Ee1IVz30zYUA46Wg=',
+#      version           => '7.7.0',
+#      password          => 'password',
 #      secret_key        => 'bxXkluWCyi7vNDDALvCKOGCI2WEbohkpF9nVPnV6jWGB1grz5csT3g==',
 #      email             => 'sentry@example.com',
 #      url               => 'https://sentry.example.com',
@@ -32,7 +32,7 @@
 #
 class sentry_profile(
   $version,
-  $password_hash,
+  $password,
   $secret_key,
   $email,
   $url,
@@ -47,7 +47,7 @@ class sentry_profile(
 
   validate_string(
     $version,
-    $password_hash,
+    $password,
     $secret_key,
     $email,
     $database_password,
@@ -84,7 +84,7 @@ class sentry_profile(
 
   class { '::sentry':
     version         => $version,
-    password_hash   => $password_hash,
+    password        => $password,
     secret_key      => $secret_key,
     email           => $email,
     url             => $url,

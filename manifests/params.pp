@@ -36,16 +36,15 @@ class sentry::params
   $owner           = 'sentry'
   $group           = 'sentry'
   $source_location = 'pypi'
-  $version         = undef  # indicates latest pypi version
+  $version         = '7.7.0'
   $git_revision    = 'master'
   $git_url         = 'git+https://github.com/getsentry/sentry.git'
   $timeout         = 1800
 
   # Config params
-  $password_hash = 'pbkdf2_sha256$20000$9tjS6wreTjar$oAdyvcOd8HCMuBpxdyvv2Cg7xz6Ee1IVz30zYUA46Wg='
+  $password      = 'password'
   $secret_key    = 'bxXkluWCyi7vNDDALvCKOGCI2WEbohkpF9nVPnV6jWGB1grz5csT3g=='
-  $user          = 'admin'
-  $email         = 'root@localhost'
+  $email         = 'admin@localhost'
   $url           = 'http://localhost:9000'
   $host          = 'localhost'
   $port          = 9000
