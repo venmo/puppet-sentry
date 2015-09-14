@@ -204,10 +204,6 @@ Should be at least 8 characters long.
 
 The secret key to use, should be a randomly generated 40-160 byte string.
 
-##### `user`
-
-The username for the Sentry admin user, defaults to `admin`.
-
 ##### `email`
 
 The email address for the Sentry admin user, defaults to `admin@localhost`.
