@@ -2,24 +2,24 @@ fixtures:
   repositories:
     apt:
       repo: 'https://github.com/puppetlabs/puppetlabs-apt.git'
-      ref: '1.7.0'
+      ref: '2.1.1'
     concat:
       repo: 'https://github.com/puppetlabs/puppetlabs-concat.git'
-      ref: '1.1.2'
+      ref: '1.2.4'
     git:
       repo: 'https://github.com/puppetlabs/puppetlabs-git.git'
-      ref: '0.3.0'
+      ref: '0.4.0'
     nodejs:
       repo: 'https://github.com/puppetlabs/puppetlabs-nodejs.git'
       ref: '0.7.1'
     python:
       repo: 'https://github.com/stankevich/puppet-python.git'
-      ref: '1.8.3'
+      ref: '1.9.7'
     stdlib:
       repo: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
-      ref: '4.5.1'
+      ref: '4.8.0'
     supervisord:
       repo: 'https://github.com/ajcrowe/puppet-supervisord.git'
-      ref: 'v0.5.1'
+      ref: 'v0.5.2'
   symlinks:
     sentry: "#{source_dir}"
