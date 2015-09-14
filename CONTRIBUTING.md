@@ -78,7 +78,7 @@ by default. To run against another host, set the `BEAKER_set` environment
 variable to the name of a host described by a `.yml` file in the
 `nodeset` directory. For example, to run against Debian 7:
 
-    BEAKER_set=debian-76-x64 bundle exec rake acceptance
+    BEAKER_set=debian-78-x64 bundle exec rake acceptance
 
 If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_destroy=no` and `BEAKER_provision=no`. On the first run you will
