@@ -33,6 +33,15 @@ class sentry::config
     ),
   }
 
+  exec { 'update setuptools':
+    user    => $sentry::owner,
+    cwd     => $sentry::path,
+    timeout => $sentry::timeout,
+    command => "${sentry::install::pip_command} install -U setuptools==35.0.2",
+    unless  => "${sentry::install::pip_command} list | /bin/grep 'setuptools (35.0.2)'",
+    before  => Sentry::Command['postconfig_upgrade'],
+  }
+  
   file { "${sentry::path}/sentry.conf.py":
     ensure  => present,
     content => template('sentry/sentry.conf.py.erb'),
