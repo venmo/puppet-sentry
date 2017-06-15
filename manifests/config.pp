@@ -47,8 +47,8 @@ class sentry::config
     cwd     => $sentry::path,
     timeout => $sentry::timeout,
     command => "${sentry::install::pip_command} uninstall -y raven && ${sentry::install::pip_command} install raven==5.6.0",
-    unless  => "${sentry::install::pip_command} list | /bin/grep 'raven==(5.6.0)'",
-    # before  => Sentry::Command['postconfig_upgrade'],
+    unless  => "${sentry::install::pip_command} list | /bin/grep 'raven (5.6.0)'",
+    before  => Sentry::Command['postconfig_upgrade'],
   }
   
   file { "${sentry::path}/sentry.conf.py":
