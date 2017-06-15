@@ -40,8 +40,19 @@ class sentry::config
     command => "${sentry::install::pip_command} install -U setuptools==35.0.2",
     unless  => "${sentry::install::pip_command} list | /bin/grep 'setuptools (35.0.2)'",
     before  => Sentry::Command['postconfig_upgrade'],
+  } ->
+
+  #Ideally would like a better way to handle this maybe using package and pip through
+  #virtualenv.
+  exec { 'lock raven version':
+    user    => $sentry::owner,
+    cwd     => $sentry::path,
+    timeout => $sentry::timeout,
+    command => "${sentry::install::pip_command} uninstall -y raven && ${sentry::install::pip_command} install raven==5.6.0",
+    unless  => "${sentry::install::pip_command} list | /bin/grep 'raven (5.6.0)'",
+    before  => Sentry::Command['postconfig_upgrade'],
   }
-  
+
   file { "${sentry::path}/sentry.conf.py":
     ensure  => present,
     content => template('sentry/sentry.conf.py.erb'),
