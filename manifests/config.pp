@@ -42,6 +42,8 @@ class sentry::config
     before  => Sentry::Command['postconfig_upgrade'],
   } ->
 
+  #Ideally would like a better way to handle this maybe using package and pip through
+  #virtualenv.
   exec { 'lock raven version':
     user    => $sentry::owner,
     cwd     => $sentry::path,
@@ -50,7 +52,7 @@ class sentry::config
     unless  => "${sentry::install::pip_command} list | /bin/grep 'raven (5.6.0)'",
     before  => Sentry::Command['postconfig_upgrade'],
   }
-  
+
   file { "${sentry::path}/sentry.conf.py":
     ensure  => present,
     content => template('sentry/sentry.conf.py.erb'),
