@@ -10,6 +10,7 @@ class sentry::install
   $pip_command       = "${virtualenv_path}/bin/pip"
   $requirements_file = "${virtualenv_path}/requirements.txt"
 
+
   if $sentry::database in ['mysql', 'postgres'] {
     $pip_install_spec = "sentry[${sentry::database}]"
   } else {
