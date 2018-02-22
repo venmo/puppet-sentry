@@ -1,3 +1,5 @@
+#TESTING
+
 # == Class: sentry
 #
 # This class installs, configures, and manages the
